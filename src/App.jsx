@@ -14,7 +14,7 @@ import getAllPost from "./hooks/getAllPost";
 import getAllLoops from "./hooks/getAllLoops";
 import Loops from "./pages/Loops";
 
-export const serverUrl = "http://localhost:4000";
+export const serverUrl = "https://instaclone-4-f0p8.onrender.com";
 
 function App() {
 const { userData } = useSelector(state => state.user);
