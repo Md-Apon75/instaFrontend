@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPostData } from "../redux/postSlice";
 import {setStoryData} from "../redux/storySlice"
 import {setLoopData} from "../redux/loopSlice"
+import { setUserData } from "../redux/userSlice";
 
 function Upload() {
     const [uploadType, setUploadType] = useState("post");
@@ -43,7 +44,7 @@ function Upload() {
             formData.append("caption", caption);
             formData.append("mediaType", mediaType);
             formData.append("media", backendMedia);
-             console.log("BackendMedia:", backendMedia); // file object
+             console.log("BackendMedia:", backendMedia); 
              console.log("Caption:", caption);
             const result = await axios.post(
                 `${serverUrl}/api/post/upload`,
@@ -59,25 +60,27 @@ function Upload() {
             console.log(error);
         }
     };
+const uploadStory = async () => {
+  try {
+    const formData = new FormData();
+    formData.append("mediaType", mediaType);
+    formData.append("media", backendMedia);
 
-    const uploadStory = async () => {
-        try {
-            const formData = new FormData();
-            formData.append("mediaType", mediaType);
-            formData.append("media", backendMedia);
+    const result = await axios.post(
+      `${serverUrl}/api/story/upload`,
+      formData,
+      { withCredentials: true }
+    );
 
-            const result = await axios.post(
-                `${serverUrl}/api/story/upload`,
-                formData,
-                { withCredentials: true }
-                
-            );
-                 dispatch(setStoryData([...storyData,result.data]))
-            console.log("Story Uploaded:", result.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    dispatch(setStoryData([result.data]));
+    dispatch(setUserData(result.data.author));
+
+    navigate("/"); // home এ পাঠাও
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
    const uploadLoop = async () => {
   try {
@@ -102,10 +105,6 @@ function Upload() {
     console.log(error);
   }
 };
-
-
-    
-
    const handelUpload = async () => {
     if (uploadType === "post") await uploadPost();
     else if (uploadType === "story") await uploadStory();
@@ -205,5 +204,4 @@ function Upload() {
         </div>
     );
 }
-
 export default Upload;

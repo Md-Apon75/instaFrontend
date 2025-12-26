@@ -4,12 +4,12 @@ const storySlice = createSlice({
     initialState: {
         storyData:[]
     },
-    reducers: {
-        setStoryData: (state, action) => {
-            state.postData = action.payload
-        },
-       
-    }
+   reducers: {
+    setStoryData: (state, action) => {
+        state.storyData = action.payload // ✅
+    },
+}
+
 });
 export const {setStoryData} = storySlice.actions;
 export default storySlice.reducer;

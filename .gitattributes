@@ -1,0 +1,37 @@
+# সব টেক্সট ফাইল LF এ normalize হবে
+* text=auto eol=lf
+
+# JavaScript/TypeScript ফাইল
+*.js   text eol=lf
+*.jsx  text eol=lf
+*.ts   text eol=lf
+*.tsx  text eol=lf
+
+# CSS/HTML ফাইল
+*.css  text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+
+# Config/JSON ফাইল
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+
+# Markdown/Documentation
+*.md   text eol=lf
+
+# Lock files (এগুলোতে line ending পরিবর্তন না করাই ভালো)
+package-lock.json -text
+yarn.lock -text
+pnpm-lock.yaml -text
+
+# Binary ফাইল (image, font ইত্যাদি)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.svg  binary
+*.ico  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary

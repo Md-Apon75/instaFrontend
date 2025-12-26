@@ -13,7 +13,7 @@ import Upload from "./pages/Upload";
 import getAllPost from "./hooks/getAllPost";
 import getAllLoops from "./hooks/getAllLoops";
 import Loops from "./pages/Loops";
-import Story from "./pages/Story";
+
 export const serverUrl = "http://localhost:4000";
 
 function App() {
@@ -43,7 +43,8 @@ return (
         />
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/editprofile" element={<EditProfile />} />
-         <Route path="/Story/:username" element={<Story />} />
+         {/* <Route path="/story/:userName" element={<StoryView />} /> */}
+
         <Route
             path="/upload"
             element={userData ? <Upload /> : <Navigate to="/signin" />}

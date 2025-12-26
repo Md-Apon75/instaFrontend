@@ -1,5 +1,5 @@
 import { FiHeart } from "react-icons/fi";
-import StoryDP from "./StoryDp";
+
 import Nav from "./Nav";
 import { useSelector, useDispatch } from "react-redux";
 import Post from "./Post";
@@ -34,10 +34,7 @@ function Feed() {
         <div>
           <FiHeart className="text-white w-[25px] h-[25px] m-4" />
         </div>
-        <div className="flex w-full gap-[20px] items-center overflow-x-auto p-2 scroll-smooth cursor-pointer">
-          <StoryDP userName={"Your Story"} profileImage={userData.profileImage}/>
-         
-        </div>
+        
       </div>
 
       <div className="w-full min-h-[100vh] flex flex-col items-center gap-[20px] p-[10px] pt-[40px] bg-white rounded-t-[60px] relative pb-[120px]">
